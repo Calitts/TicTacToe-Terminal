@@ -34,9 +34,9 @@ def show(items):  # SHOW THE 2D LIST IN THE TERMINAL
             elif i is None:
                 z.append("-")
             elif i == 2:
-                z.append("⊘ ")
+                z.append("⊘")
             elif i == 3:
-                z.append("⨂ ")
+                z.append("⨂")
 
         print(f"{alfabeto[e]} |", " ".join(z))
 
