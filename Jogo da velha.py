@@ -6,6 +6,7 @@ WINNER = "You won!"
 DEFALT_WIN = True
 BOARD_SIZE = 5
 PLAY_AGAIN = True
+ALFABETO = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 # TODO1: CANCEL MODE IN GAME
 # TODO2: WAY TO SELECT MORE THAN ABC PLACES
@@ -19,7 +20,6 @@ def getnumbers(i):  # TRANSFORM THE LETTERS TO REFERENCE THE COLLUMS
 
 
 def show(items):  # SHOW THE 2D LIST IN THE TERMINAL
-    alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     f = len(items)
     barrier = "---" + "-" * (f * 2) + "--"
 
@@ -38,7 +38,7 @@ def show(items):  # SHOW THE 2D LIST IN THE TERMINAL
             elif i == 3:
                 z.append("⨂")
 
-        print(f"{alfabeto[e]} |", " ".join(z))
+        print(f"{ALFABETO[e]} |", " ".join(z))
 
 
 def gettable(alfa):  # NOT NESCESSARY - PUT NUMBER IN A DICT TO LETTER
@@ -59,24 +59,13 @@ def getinput(player):  # GETS THE PLAYER INPUT ACORDING TO WHO IS THE TURN
         # value_row, value_col = None, None
         collum = place[0].upper()
         row = place[1]
+        letter_to_number = {}
 
-        if collum == "A":
-            value_col = 1
-
-        elif collum == "B":
-            value_col = 2
-
-        elif collum == "C":
-            value_col = 3
-
-        if row == "1":
-            value_row = 1
-
-        elif row == "2":
-            value_row = 2
-
-        elif row == "3":
-            value_row = 3
+        for i, letter in enumerate(ALFABETO):
+            letter_to_number[letter] = i
+        
+        value_col = letter_to_number[collum]
+        value_row = int(row)
 
         return [value_col, value_row]
 
@@ -87,7 +76,7 @@ def getinput(player):  # GETS THE PLAYER INPUT ACORDING TO WHO IS THE TURN
 
 
 # TODO2: In getinput():
-# TODO2_resolution: PUT FOR LOOP IN alfabeto WITH enumerate(),
+# TODO2_resolution: PUT FOR LOOP IN ALFABETO WITH enumerate(),
 # TODO2_resolution: INCREASING THE VALUE EACH TIME
 
 
